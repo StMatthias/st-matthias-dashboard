@@ -1,10 +1,10 @@
-import RootLayout from "@/app/dashboard/Layout";
+import LayoutPage from "@/app/dashboard/Layout";
 
 function MyApp({ Component, pageProps }: any) {
   return (
-      <RootLayout>
+      <LayoutPage>
         <Component {...pageProps} />
-      </RootLayout>
+      </LayoutPage>
   );
 }
 
