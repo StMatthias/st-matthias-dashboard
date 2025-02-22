@@ -1,9 +1,12 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
+import RootLayout from "@/app/dashboard/Layout";
 
 function MyApp({ Component, pageProps }: any) {
   return (
     <SidebarProvider>
-      <Component {...pageProps} />
+      <RootLayout>
+        <Component {...pageProps} />
+      </RootLayout>
     </SidebarProvider>
   );
 }
