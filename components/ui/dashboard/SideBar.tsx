@@ -1,57 +1,61 @@
-import {
-  Sidebar as SidebarComponent,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuItem,
-  SidebarMenuButton,
-} from "@/components/ui/sidebar"
-import { Users, Baby, Music, Church, Building2, Star, UserPlus, User, Mic2, BookOpen } from "lucide-react"
+import Link from 'next/link'; // Or use 'react-router-dom' if using React Router
+import { FaRegFileAlt, FaUpload, FaCheckCircle, FaGlobe, FaCog, FaBaby, FaMusic, FaUser, FaChurch, FaBuilding, FaStar, FaUserPlus, FaMicrophone, FaBookOpen } from 'react-icons/fa';
 
-const groups = [
-  { name: "Church Members", icon: Users },
-  { name: "Children", icon: Baby },
-  { name: "Choir", icon: Music },
-  { name: "Communicants", icon: Church },
-  { name: "Development", icon: Building2 },
-  { name: "Elim", icon: Star },
-  { name: "Kama", icon: UserPlus },
-  { name: "MU", icon: User },
-  { name: "Kayo", icon: User },
-  { name: "PCC", icon: User },
-  { name: "Praise and Worship", icon: Mic2 },
-  { name: "Titus", icon: BookOpen },
-]
-
-export function Sidebar() {
+export const Sidebar = () => {
   return (
-    <SidebarComponent>
-      <SidebarHeader>
-        <h2 className="text-xl font-bold">Church Dashboard</h2>
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Church Groups</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {groups.map((group) => (
-                <SidebarMenuItem key={group.name}>
-                  <SidebarMenuButton asChild>
-                    <a href={`#${group.name.toLowerCase().replace(/\s+/g, "-")}`}>
-                      <group.icon className="mr-2 h-4 w-4" />
-                      <span>{group.name}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-    </SidebarComponent>
-  )
-}
+    <div className="w-64 bg-white text-black flex flex-col p-15 pt-20 ">
+
+      <nav className="flex flex-col gap-4">
+        <Link href="/dashboard/index" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaUser className="mr-3" />
+        Church Members
+        </Link>
+        <Link href="/dashboard/checklist" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaBaby className="mr-3" />
+        Children
+        </Link>
+        <Link href="/dashboard/upload" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaMusic className="mr-3" />
+        Choir
+        </Link>
+        <Link href="/dashboard/audit" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaChurch className="mr-3" />
+        Communicants
+        </Link>
+        <Link href="/dashboard/checklist" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaBuilding className="mr-3" />
+        Development
+        </Link>
+        <Link href="/dashboard/checklist" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaStar className="mr-3" />
+        Elim
+        </Link>
+        <Link href="/dashboard/checklist" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaUserPlus className="mr-3" />
+        Kama
+        </Link>
+        <Link href="/dashboard/checklist" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaUser className="mr-3" />
+        MU
+        </Link>
+        <Link href="/dashboard/checklist" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaUser className="mr-3" />
+        Kayo
+        </Link>
+        <Link href="/dashboard/checklist" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaCheckCircle className="mr-3" />
+        PCC
+        </Link>
+        <Link href="/dashboard/checklist" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaMicrophone className="mr-3" />
+        Praise & Worship
+        </Link>
+        <Link href="/dashboard/checklist" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaBookOpen className="mr-3" />
+        Titus
+        </Link>
+      </nav>
+    </div>
+  );
+};
 
