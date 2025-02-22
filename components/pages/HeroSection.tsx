@@ -8,18 +8,11 @@ export default function HeroSection() {
     <section className="relative flex flex-col lg:flex-row items-center justify-between px-8 py-16 lg:px-24 lg:py-32 bg-gradient-to-r from-gray-400 via-gray-900 to-gray-900 text-white">
       <div className="flex flex-row lg:w-1/2">
         <Image
-          src="/Image1.png"
+          src="/Image1.jpg"
           alt="Art Image 1"
           width={500}
           height={500}
           className="w-full h-96 ps-16 pr-2 rounded-2xl"
-        />
-        <Image
-          src="/Image2.png"
-          alt="Art Image 2"
-          width={500}
-          height={500}
-          className="w-full h-96 pe-14 pl-2 rounded-2xl"
         />
       </div>
       <div className="flex flex-col items-start lg:w-1/2 space-y-6 mt-8 lg:mt-0 lg:ml-12">

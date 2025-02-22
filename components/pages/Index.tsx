@@ -19,32 +19,22 @@ const Index = () => {
             {
               title: "St Matthias Sabaki",
               links: [
-                { name: "Explore", href: "" },
-                { name: "About", href: "" },
               ],
             },
             {
               title: "Account",
               links: [
                 { name: "Dashboard", href: "/dashboard" },
-                { name: "Watchlist", href: ""},
-                { name: "Settings", href: "" },
               ],
             },
             {
               title: "Resources",
               links: [
-                { name: "Platform Status", href: "" },
-                { name: "Partners", href: "" },
-                { name: "Newsletter", href: "" },
               ],
             },
             {
               title: "Community",
               links: [
-                { name: "Help Center", href: "" },
-                { name: "Suggest Feature", href: "" },
-                { name: "Subscribe", href: "" },
               ],
             },
           ]}
