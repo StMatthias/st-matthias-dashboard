@@ -13,7 +13,7 @@ export default function MediumButton({
       <>
       <button 
       onClick={onClick}
-      className="text-sm bg-purple-400 px-7 py-3 rounded-[7px] text-white font-semibold">
+      className="text-sm bg-gray-400 px-7 py-3 rounded-[7px] text-white font-semibold">
         {children}
       </button>
       </>  

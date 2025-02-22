@@ -1,29 +1,57 @@
-import Link from 'next/link'; // Or use 'react-router-dom' if using React Router
-import { FaRegFileAlt, FaUpload, FaCheckCircle, FaGlobe, FaCog } from 'react-icons/fa';
+import {
+  Sidebar as SidebarComponent,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+} from "@/components/ui/sidebar"
+import { Users, Baby, Music, Church, Building2, Star, UserPlus, User, Mic2, BookOpen } from "lucide-react"
 
-export const Sidebar = () => {
+const groups = [
+  { name: "Church Members", icon: Users },
+  { name: "Children", icon: Baby },
+  { name: "Choir", icon: Music },
+  { name: "Communicants", icon: Church },
+  { name: "Development", icon: Building2 },
+  { name: "Elim", icon: Star },
+  { name: "Kama", icon: UserPlus },
+  { name: "MU", icon: User },
+  { name: "Kayo", icon: User },
+  { name: "PCC", icon: User },
+  { name: "Praise and Worship", icon: Mic2 },
+  { name: "Titus", icon: BookOpen },
+]
+
+export function Sidebar() {
   return (
-    <div className="w-64 bg-white text-black flex flex-col p-15 pt-20 ">
-
-      <nav className="flex flex-col gap-4">
-        <Link href="/dashboard/index" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaRegFileAlt className="mr-3" />
-        Reports
-        </Link>
-        <Link href="/dashboard/checklist" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaCheckCircle className="mr-3" />
-        Compliance Checklist
-        </Link>
-        <Link href="/dashboard/upload" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaUpload className="mr-3" />
-        Upload Data
-        </Link>
-        <Link href="/dashboard/audit" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaGlobe className="mr-3" />
-        Website Audit
-        </Link>
-      </nav>
-    </div>
-  );
-};
+    <SidebarComponent>
+      <SidebarHeader>
+        <h2 className="text-xl font-bold">Church Dashboard</h2>
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupLabel>Church Groups</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {groups.map((group) => (
+                <SidebarMenuItem key={group.name}>
+                  <SidebarMenuButton asChild>
+                    <a href={`#${group.name.toLowerCase().replace(/\s+/g, "-")}`}>
+                      <group.icon className="mr-2 h-4 w-4" />
+                      <span>{group.name}</span>
+                    </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+    </SidebarComponent>
+  )
+}
 

@@ -1,22 +1,25 @@
-import { ReactNode } from 'react'; 
-import { Sidebar } from '@/components/ui/dashboard/SideBar'; 
+import { ReactNode } from "react";
+import { Sidebar } from "@/components/ui/dashboard/SideBar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 interface DashboardLayoutProps {
   children: ReactNode;
 }
 
-const LayoutPage = ({ children }: DashboardLayoutProps) => {
+const RootLayout = ({ children }: DashboardLayoutProps) => {
   return (
-    <div className="flex h-screen">
-      {/* Sidebar */}
-      <Sidebar />
+    <SidebarProvider>
+      <div className="flex h-screen">
+        {/* Sidebar: Fixed to the Left */}
+        <div className="w-64 h-screen fixed left-0 top-0 bg-gray-400 shadow-md">
+          <Sidebar />
+        </div>
 
-      {/* Main content area */}
-      <div className="flex-1 bg-gray-100 p-6 overflow-y-auto">
-        {children} 
+        {/* Content: Push Right to Avoid Overlapping */}
+        <div className="flex-1 ml-64 bg-gray-400">{children}</div>
       </div>
-    </div>
+    </SidebarProvider>
   );
 };
 
-export default LayoutPage;
+export default RootLayout;
