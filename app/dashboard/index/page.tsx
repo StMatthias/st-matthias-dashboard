@@ -16,9 +16,8 @@ export default function DashboardPage() {
         <AppBar />
 
         {/* Main content container */}
-        <div className="flex flex-1 w-full h-full p-6 bg-gray-400">
+        <div className="flex flex-1 w-full h-full p-10 bg-gray-400">
           <div className="w-full h-full bg-gray-400 rounded-lg shadow-lg p-6 overflow-auto">
-            <DashboardHeader />
             <main className="h-full">
               <div className="grid gap-6 md:grid-cols-2">
                 {/* Left Column: Member Search */}
