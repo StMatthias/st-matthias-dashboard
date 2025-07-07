@@ -58,6 +58,10 @@ export const Sidebar = () => {
         <FaBookOpen className="mr-3" />
         Berea
         </Link>
+        <Link href="/dashboard/ephesus" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
+        <FaBookOpen className="mr-3" />
+        Ephesus
+        </Link>
       </nav>
     </div>
   );
