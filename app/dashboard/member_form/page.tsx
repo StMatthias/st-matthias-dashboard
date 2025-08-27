@@ -1,93 +1,38 @@
 "use client";
-
-import React, { useState } from "react";
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
-const fellowshipGroups = [
-  "Church Members", "Children", "Choir", "Communicants", "Development", "Elim",
-  "Kama", "MU", "Kayo", "PCC", "Praise and Worship", "Titus", "Ephesus",
-];
+const groups = ["Church Members","Children","Choir","Communicants","Development","Elim","Kama","MU","Kayo","PCC","Praise and Worship","Titus"];
 
 export default function AddMemberForm() {
-  const supabase = createClientComponentClient();
-
-  const [formData, setFormData] = useState({
-    name: "",
-    family_no: "",
-    contact: "",
-    felowship_group: "",
-    profession: "",
-    baptized: "",
-    communicant: "",
-    married_customary: "",
-    married_church: "",
-    confirmed: "",
-    address: "",
-  });
+  const [formData, setFormData] = useState({ name: "", familyNumber: "", contact: "", group: "", role: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const { error } = await supabase.from("church_members").insert([
-      {
-        ...formData,
-        family_no: parseInt(formData.family_no),
-        contact: parseInt(formData.contact),
-      },
-    ]);
-
-    if (error) {
-      alert("Error: " + error.message);
-    } else {
-      alert("Member added successfully!");
-      setFormData({
-        name: "",
-        family_no: "",
-        contact: "",
-        felowship_group: "",
-        profession: "",
-        baptized: "",
-        communicant: "",
-        married_customary: "",
-        married_church: "",
-        confirmed: "",
-        address: "",
-      });
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const res = await fetch("/api/members", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+    const data = await res.json();
+    console.log("Added:", data);
+    setFormData({ name: "", familyNumber: "", contact: "", group: "", role: "" }); // reset
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <Input name="name" placeholder="Full Name" value={formData.name} onChange={handleChange} />
-      <Input name="family_no" placeholder="Family Number" value={formData.family_no} onChange={handleChange} />
-      <Input name="contact" placeholder="Contact" value={formData.contact} onChange={handleChange} />
-      <Input name="profession" placeholder="Profession" value={formData.profession} onChange={handleChange} />
-
-      <Select onValueChange={(value) => setFormData({ ...formData, felowship_group: value })}>
-        <SelectTrigger>
-          <SelectValue placeholder="Select Fellowship Group" />
-        </SelectTrigger>
+      <Input name="name" placeholder="Name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+      <Input name="familyNumber" placeholder="Family Number" value={formData.familyNumber} onChange={(e) => setFormData({ ...formData, familyNumber: e.target.value })} />
+      <Input name="contact" placeholder="Contact" value={formData.contact} onChange={(e) => setFormData({ ...formData, contact: e.target.value })} />
+      <Select onValueChange={(value) => setFormData({ ...formData, group: value })}>
+        <SelectTrigger><SelectValue placeholder="Select a group" /></SelectTrigger>
         <SelectContent>
-          {fellowshipGroups.map((group) => (
-            <SelectItem key={group} value={group}>{group}</SelectItem>
-          ))}
+          {groups.map((g) => <SelectItem key={g} value={g}>{g}</SelectItem>)}
         </SelectContent>
       </Select>
-
-      <Input name="baptized" placeholder="Baptized (Yes/No)" value={formData.baptized} onChange={handleChange} />
-      <Input name="communicant" placeholder="Communicant (Yes/No)" value={formData.communicant} onChange={handleChange} />
-      <Input name="confirmed" placeholder="Confirmed (Yes/No)" value={formData.confirmed} onChange={handleChange} />
-      <Input name="married_customary" placeholder="Married Customary (Yes/No)" value={formData.married_customary} onChange={handleChange} />
-      <Input name="married_church" placeholder="Married Church (Yes/No)" value={formData.married_church} onChange={handleChange} />
-      <Input name="address" placeholder="Address" value={formData.address} onChange={handleChange} />
-
+      <Input name="role" placeholder="Role (if applicable)" value={formData.role} onChange={(e) => setFormData({ ...formData, role: e.target.value })} />
       <Button type="submit">Add Member</Button>
     </form>
   );

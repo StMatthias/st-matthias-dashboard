@@ -31,17 +31,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
       <body className="bg-purple-200 text-foreground min-h-screen w-full">
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <main className="min-h-screen w-full flex justify-center items-center">
-              <div className="w-full">{children}</div>
-            </main>
-          </ThemeProvider>
-        </body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className="min-h-screen flex items-center justify-center bg-background">
+            {/* Centered container */}
+            <div className="w-full">
+              {children}
+            </div>
+          </main>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
+
