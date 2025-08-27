@@ -3,25 +3,30 @@ import { createClient } from "@supabase/supabase-js";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
+  process.env.SUPABASE_SERVICE_ROLE_KEY! // service role for full CRUD
 );
 
-// GET single member
+// GET member by ID
 export async function GET(
   req: Request,
   { params }: { params: { id: string } }
 ) {
-  const { data, error } = await supabase
-    .from("church_members")
-    .select("*")
-    .eq("id", params.id)
-    .single();
+  try {
+    const { data, error } = await supabase
+      .from("church_members")
+      .select("*")
+      .eq("id", params.id)
+      .single();
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json(data);
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+    return NextResponse.json(data, { status: 200 });
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 500 });
+  }
 }
 
-// UPDATE member
+// UPDATE member by ID
 export async function PUT(
   req: Request,
   { params }: { params: { id: string } }
@@ -35,10 +40,10 @@ export async function PUT(
     .single();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json(data);
+  return NextResponse.json(data, { status: 200 });
 }
 
-// DELETE member
+// DELETE member by ID
 export async function DELETE(
   req: Request,
   { params }: { params: { id: string } }
@@ -46,5 +51,5 @@ export async function DELETE(
   const { error } = await supabase.from("church_members").delete().eq("id", params.id);
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json({ success: true });
+  return NextResponse.json({ success: true }, { status: 200 });
 }
