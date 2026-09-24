@@ -40,7 +40,7 @@ export default function MemberSearch({ onSelect }: { onSelect: (member: Member) 
         {results.map((member) => (
           <li
             key={member.id}
-            className="p-2 border rounded cursor-pointer hover:bg-gray-100"
+            className="p-2 border rounded cursor-pointer hover:bg-gray-300"
             onClick={() => onSelect(member)}   // ✅ pass selected member
           >
             {member.name} ({member.family_no})
