@@ -9,13 +9,15 @@ const supabase = createClient(
 // GET member by ID
 export async function GET(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
+
     const { data, error } = await supabase
       .from("church_members")
       .select("*")
-      .eq("id", params.id)
+      .eq("id", id)
       .single();
 
     if (error) return NextResponse.json({ error: error.message }, { status: 500 });
@@ -29,13 +31,15 @@ export async function GET(
 // UPDATE member by ID
 export async function PUT(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   const body = await req.json();
+
   const { data, error } = await supabase
     .from("church_members")
     .update(body)
-    .eq("id", params.id)
+    .eq("id", id)
     .select()
     .single();
 
@@ -46,9 +50,11 @@ export async function PUT(
 // DELETE member by ID
 export async function DELETE(
   req: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const { error } = await supabase.from("church_members").delete().eq("id", params.id);
+  const { id } = await params;
+
+  const { error } = await supabase.from("church_members").delete().eq("id", id);
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json({ success: true }, { status: 200 });
