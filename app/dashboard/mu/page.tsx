@@ -1,6 +1,6 @@
 "use client";
 
-import DashboardHeader from "../dashboard_header/page";
+import DashboardHeader from "@/components/pages/DashboardHeader";
 import LayoutPage from "../Layout";
 import AppBar from "@/components/layout/AppBar";
 import MuComponent from "@/components/pages/MuDashboard";

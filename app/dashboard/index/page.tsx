@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import DashboardHeader from "../dashboard_header/page";
-import MemberSearch from "../member_search/page";
-import AddMemberForm from "../member_form/page";
-import MemberDetails from "../member_details/page";
+import DashboardHeader from "@/components/pages/DashboardHeader";
+import MemberSearch from "@/components/pages/MemberSearch";
+import AddMemberForm from "@/components/pages/AddMemberForm";
+import MemberDetails from "@/components/pages/MemberDetails";
 import LayoutPage from "../Layout";
 import AppBar from "@/components/layout/AppBar";
+import { Member } from "@/app/types/member";
 
 export default function DashboardPage() {
-  const [selectedMember, setSelectedMember] = useState<any>(null);
+  const [selectedMember, setSelectedMember] = useState<Member | null>(null);
 
   return (
     <LayoutPage>
