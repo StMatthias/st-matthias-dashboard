@@ -1,69 +1,67 @@
-import Link from 'next/link'; // Or use 'react-router-dom' if using React Router
+import Link from 'next/link';
 import { FaRegFileAlt, FaUpload, FaCheckCircle, FaGlobe, FaCog, FaBaby, FaMusic, FaUser, FaChurch, FaBuilding, FaStar, FaUserPlus, FaMicrophone, FaBookOpen } from 'react-icons/fa';
 
 export const Sidebar = () => {
   return (
-    <div className="w-64 bg-white text-black flex flex-col p-15 pt-20 ">
-
-      <nav className="flex flex-col gap-4">
-        <Link href="/dashboard/index" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaUser className="mr-3" />
-        Church Members
+    <div className="w-64 h-full bg-white text-black flex flex-col overflow-y-auto p-4 md:p-8 md:pt-20">
+      <nav className="flex flex-col gap-2">
+        <Link href="/dashboard/index" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaUser className="mr-3" />
+          Church Members
         </Link>
-        <Link href="/dashboard/children" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaBaby className="mr-3" />
-        Children
+        <Link href="/dashboard/children" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaBaby className="mr-3" />
+          Children
         </Link>
-        <Link href="/dashboard/choir" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaMusic className="mr-3" />
-        Choir
+        <Link href="/dashboard/choir" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaMusic className="mr-3" />
+          Choir
         </Link>
-        <Link href="/dashboard/communicants" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaChurch className="mr-3" />
-        Communicants
+        <Link href="/dashboard/communicants" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaChurch className="mr-3" />
+          Communicants
         </Link>
-        <Link href="/dashboard/development" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaBuilding className="mr-3" />
-        Development
+        <Link href="/dashboard/development" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaBuilding className="mr-3" />
+          Development
         </Link>
-        <Link href="/dashboard/elim" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaStar className="mr-3" />
-        Elim
+        <Link href="/dashboard/elim" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaStar className="mr-3" />
+          Elim
         </Link>
-        <Link href="/dashboard/kama" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaUserPlus className="mr-3" />
-        Kama
+        <Link href="/dashboard/kama" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaUserPlus className="mr-3" />
+          Kama
         </Link>
-        <Link href="/dashboard/mu" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaUser className="mr-3" />
-        MU
+        <Link href="/dashboard/mu" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaUser className="mr-3" />
+          MU
         </Link>
-        <Link href="/dashboard/kayo" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaUser className="mr-3" />
-        Kayo
+        <Link href="/dashboard/kayo" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaUser className="mr-3" />
+          Kayo
         </Link>
-        <Link href="/dashboard/pcc" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaCheckCircle className="mr-3" />
-        PCC
+        <Link href="/dashboard/pcc" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaCheckCircle className="mr-3" />
+          PCC
         </Link>
-        <Link href="/dashboard/praiseworship" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaMicrophone className="mr-3" />
-        Praise & Worship
+        <Link href="/dashboard/praiseworship" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaMicrophone className="mr-3" />
+          Praise & Worship
         </Link>
-        <Link href="/dashboard/titus" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaBookOpen className="mr-3" />
-        Titus
+        <Link href="/dashboard/titus" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaBookOpen className="mr-3" />
+          Titus
         </Link>
-        <Link href="/dashboard/berea" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaBookOpen className="mr-3" />
-        Berea
+        <Link href="/dashboard/berea" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaBookOpen className="mr-3" />
+          Berea
         </Link>
-        <Link href="/dashboard/ephesus" className="block py-2 px-6 rounded-lg hover:bg-blue-300 flex items-center">
-        <FaBookOpen className="mr-3" />
-        Ephesus
+        <Link href="/dashboard/ephesus" className="block py-2 px-4 rounded-lg hover:bg-blue-300 flex items-center">
+          <FaBookOpen className="mr-3" />
+          Ephesus
         </Link>
       </nav>
     </div>
   );
 };
-

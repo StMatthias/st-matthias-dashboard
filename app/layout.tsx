@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={geistSans.className} suppressHydrationWarning>
-      <body className="bg-purple-200 text-foreground min-h-screen w-full">
+    <html lang="en" className={`${geistSans.className} h-full`} suppressHydrationWarning>
+      <body className="bg-gray-100 text-foreground min-h-screen w-full">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -39,7 +39,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <main className="min-h-screen flex items-center justify-center bg-background">
-            {/* Centered container */}
             <div className="w-full">
               {children}
               <Toaster />
@@ -50,5 +49,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-

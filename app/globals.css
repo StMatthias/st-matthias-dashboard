@@ -94,3 +94,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* globals.css */
+html, body {
+  background-color: #f3f4f6; /* match your actual page background — e.g. Tailwind's gray-100 */
+  height: 100%;
+}

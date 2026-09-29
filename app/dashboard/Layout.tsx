@@ -28,9 +28,9 @@ const LayoutPage = ({ children }: DashboardLayoutProps) => {
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="p-0 w-64">
-            <Sidebar />
-          </SheetContent>
+            <SheetContent side="left" className="p-0 w-64 overflow-y-auto h-full">
+              <Sidebar />
+            </SheetContent>
         </Sheet>
       </div>
 

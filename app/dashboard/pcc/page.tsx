@@ -8,10 +8,10 @@ import PccComponent from "@/components/pages/PccDasboard";
 export default function Page() {
   return (
     <LayoutPage>
-      <div className="flex flex-col w-[86vw] h-screen mx-auto overflow-hidden">
-        <AppBar />
-        <div className="flex flex-1 w-full h-full p-6 bg-gray-400">
-          <div className="w-full h-full bg-gray-400 rounded-lg shadow-lg p-6 overflow-auto">
+      <div className="flex flex-col w-full md:w-[86vw] min-h-screen mx-auto overflow-y-auto">
+              <AppBar />
+              <div className="flex flex-1 w-full p-3 md:p-6 bg-gray-100">
+                <div className="w-full bg-gray-100 rounded-lg shadow-lg p-3 md:p-6">
             <DashboardHeader />
 
             <PccComponent />
