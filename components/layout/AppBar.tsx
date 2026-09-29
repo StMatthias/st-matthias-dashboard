@@ -15,9 +15,9 @@ export default function AppBar() {
     const { data, error } = await supabase.auth.getUser();
     if (data.user) {
       setUser(data.user); // Store the authenticated user
-    } else if (error) {
-      console.error("Error fetching user:", error);
-      setUser(null); 
+    } else {
+      // No active session — expected for logged-out visitors, not an error
+      setUser(null);
     }
   };
 
