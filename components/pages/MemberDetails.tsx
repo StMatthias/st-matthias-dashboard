@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Member } from "@/app/types/member";
+import { Label } from "../ui/label";
 
 const groups = ["Church Members","Children","Choir","Communicants","Development","Elim","Berea","Kama","MU","Kayo","PCC","Praise and Worship","Titus"];
 const yesNo = ["Yes", "No"];
@@ -117,51 +118,87 @@ export default function MemberDetails({
     );
   }
 
-  return (
-    <div className="mt-6 p-4 border rounded bg-black space-y-4">
-      <h3 className="text-xl font-semibold mb-2">Editing {member.name}</h3>
+return (
+  <div className="mt-6 p-4 border rounded bg-black space-y-4">
+    <h3 className="text-xl font-semibold mb-2">Editing {member.name}</h3>
 
-      <Input placeholder="Full Name" value={formData.name} onChange={(e) => handleChange("name", e.target.value)} />
-      <Input placeholder="Family Number" value={formData.family_no} onChange={(e) => handleChange("family_no", e.target.value)} />
-      <Input placeholder="Contact" value={formData.contact} onChange={(e) => handleChange("contact", e.target.value)} />
-      <Input placeholder="Profession" value={formData.profession} onChange={(e) => handleChange("profession", e.target.value)} />
+    <div className="space-y-1">
+      <Label htmlFor="name">Full Name</Label>
+      <Input id="name" placeholder="Full Name" value={formData.name} onChange={(e) => handleChange("name", e.target.value)} />
+    </div>
 
+    <div className="space-y-1">
+      <Label htmlFor="family_no">Family Number</Label>
+      <Input id="family_no" placeholder="Family Number" value={formData.family_no} onChange={(e) => handleChange("family_no", e.target.value)} />
+    </div>
+
+    <div className="space-y-1">
+      <Label htmlFor="contact">Contact</Label>
+      <Input id="contact" placeholder="Contact" value={formData.contact} onChange={(e) => handleChange("contact", e.target.value)} />
+    </div>
+
+    <div className="space-y-1">
+      <Label htmlFor="profession">Profession</Label>
+      <Input id="profession" placeholder="Profession" value={formData.profession} onChange={(e) => handleChange("profession", e.target.value)} />
+    </div>
+
+    <div className="space-y-1">
+      <Label>Fellowship Group</Label>
       <Select value={formData.fellowship_group} onValueChange={(v) => handleChange("fellowship_group", v)}>
         <SelectTrigger><SelectValue placeholder="Select Fellowship Group" /></SelectTrigger>
         <SelectContent>{groups.map((g) => <SelectItem key={g} value={g}>{g}</SelectItem>)}</SelectContent>
       </Select>
+    </div>
 
+    <div className="space-y-1">
+      <Label>Baptized</Label>
       <Select value={formData.baptized} onValueChange={(v) => handleChange("baptized", v)}>
         <SelectTrigger><SelectValue placeholder="Baptized (Yes/No)" /></SelectTrigger>
         <SelectContent>{yesNo.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}</SelectContent>
       </Select>
+    </div>
 
+    <div className="space-y-1">
+      <Label>Communicant</Label>
       <Select value={formData.communicant} onValueChange={(v) => handleChange("communicant", v)}>
         <SelectTrigger><SelectValue placeholder="Communicant (Yes/No)" /></SelectTrigger>
         <SelectContent>{yesNo.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}</SelectContent>
       </Select>
+    </div>
 
+    <div className="space-y-1">
+      <Label>Confirmed</Label>
       <Select value={formData.confirmed} onValueChange={(v) => handleChange("confirmed", v)}>
         <SelectTrigger><SelectValue placeholder="Confirmed (Yes/No)" /></SelectTrigger>
         <SelectContent>{yesNo.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}</SelectContent>
       </Select>
+    </div>
 
+    <div className="space-y-1">
+      <Label>Married Customary</Label>
       <Select value={formData.married_customary} onValueChange={(v) => handleChange("married_customary", v)}>
         <SelectTrigger><SelectValue placeholder="Married Customary (Yes/No)" /></SelectTrigger>
         <SelectContent>{yesNo.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}</SelectContent>
       </Select>
+    </div>
 
+    <div className="space-y-1">
+      <Label>Married Church</Label>
       <Select value={formData.married_church} onValueChange={(v) => handleChange("married_church", v)}>
         <SelectTrigger><SelectValue placeholder="Married Church (Yes/No)" /></SelectTrigger>
         <SelectContent>{yesNo.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}</SelectContent>
       </Select>
-
-      <Input placeholder="Address" value={formData.address} onChange={(e) => handleChange("address", e.target.value)} />
-
-      <div className="flex gap-2">
-        <Button onClick={handleSave}>Save Changes</Button>
-        <Button variant="outline" onClick={handleCancel}>Cancel</Button>
-      </div>
     </div>
-  );
+
+    <div className="space-y-1">
+      <Label htmlFor="address">Address</Label>
+      <Input id="address" placeholder="Address" value={formData.address} onChange={(e) => handleChange("address", e.target.value)} />
+    </div>
+
+    <div className="flex gap-2">
+      <Button onClick={handleSave}>Save Changes</Button>
+      <Button variant="outline" onClick={handleCancel}>Cancel</Button>
+    </div>
+  </div>
+);
 }
